@@ -1,5 +1,5 @@
 
-int nDots = 20;
+int nDots = 50;
 PVector[] dots;
 
 void setup () {
@@ -49,10 +49,14 @@ void renderDots() {
     fill(127, 100);
     ellipse(dots[i].x, dots[i].y, 33, 33);
   }
-  
+
   for (int i = 0; i < nDots; i++) {
     for (int j = i + 1; j < nDots; j++) {
-      line(dots[i].x, dots[i].y, dots[j].x, dots[j].y);
+      float dist = dist(dots[i].x, dots[i].y, dots[j].x, dots[j].y);
+      if (dist <= 100) {
+        stroke(0);
+        line(dots[i].x, dots[i].y, dots[j].x, dots[j].y);
+      }
     }
   }
 }
